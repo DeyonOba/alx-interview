@@ -45,7 +45,7 @@ def canUnlockAll(boxes: List[List[Optional[int]]]) -> bool:
     if n == 1:
         return True
     # These are boxes that needs to be opened
-    set_box_idx: Set[int] = set(range(1, n))
+    set_box_idx = set(range(1, n))
 
     for box_idx, box in enumerate(boxes):
         for key in box:

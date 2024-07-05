@@ -1,5 +1,17 @@
 # Lockboxes
 
+## Set Up
+
+- Create a Python environment and activate it
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+- Install Python packages in this case PEP 8 style (version 1.7.1)
+```bash
+pip install -r requirements.txt
+```
+
 ## Problem
 
 You have `n` number of locked boxes in front of you. Each box is numbered sequentially from 0 to `n - `1` and each box may contain keys to the other boxes.

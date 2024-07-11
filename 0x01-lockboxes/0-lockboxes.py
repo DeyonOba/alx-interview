@@ -19,21 +19,21 @@ CONSTRAINT:
 
 STEPS:
 
-1. Create a variable n which stores the length of the list.
-2. Check if n is equal to 1, then we can simply return True since the
+1. Create a variable `n` which stores the length of the list.
+2. Check if `n` is equal to 1, then we can simply return True since the
 first box in the list is alway unlocked.
-3. Generate set of box index ranging from 1, to `n - 1`. This unique set of
+3. Generate a set of unique box index ranging from 1, to `n - 1`. This unique set of
 box index would then be stored in a variable `box_idx`.
-4. Next is to iterate through the boxes, then within each box I'll also iterate
-through the keys.
-5. If key is found in it's own box reject key (i.e False), else True,
-and if any key is found within the unique set of box indexs. Then
+4. Next is to iterate through each box in boxes, then within each box
+iterate through each key.
+5. If the key is found in it's own box reject key (i.e False), else True,
+and if any key is found within the unique set of box indexs, then
 remove the key from the set of box index (i.e bunch of keys).
 This mean that the box can be opened.
 6. Check if `box_idx` is empty. If it is empty then return True, meaning that
-each box can be opened
+each box can be opened.
 7. At the end of the loop, return False meaning that some boxes did not have
-key to open them.
+any key to open them.
 """
 from typing import Set, List, Optional
 

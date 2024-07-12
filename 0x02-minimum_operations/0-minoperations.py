@@ -41,29 +41,26 @@ def find_prime_numbers(n):
 
 def minOperations(n):
     """
-    Finds the minimum number of operation needed to reach the target.
+    Finds the minimum number of operation needed to reach the target number.
     """
-    if n < 1:
-        return 0
-    if n == 1:
-        return n
     num_of_operations = 0
+    prev_num_char_copied = 0
     num_char_stored = 1
-    prev_num_char_stored = 1
-    mid = n // 2 if n % 2 != 0 else n / 2
-    is_even = True if n % 2 == 0 else False
+
+    if n <= 1:
+        return num_of_operations
 
     def copy_and_paste():
-        """Implements the operation copy and paste."""
-        nonlocal num_char_stored, num_of_operations, prev_num_char_stored
-        prev_num_char_stored = num_char_stored
+        """Implements the operation copy all and paste."""
+        nonlocal num_char_stored, num_of_operations, prev_num_char_copied
+        prev_num_char_copied = num_char_stored
         num_char_stored *= 2
         num_of_operations += 2
 
     def paste():
         """Implements the operation paste."""
         nonlocal num_char_stored, num_of_operations
-        num_char_stored += prev_num_char_stored
+        num_char_stored += prev_num_char_copied
         num_of_operations += 1
 
     while num_char_stored < n:
@@ -71,6 +68,7 @@ def minOperations(n):
             copy_and_paste()
         else:
             paste()
+
     if num_char_stored == n:
         return num_of_operations
-    return 0
+    return n

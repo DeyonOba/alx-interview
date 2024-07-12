@@ -67,7 +67,7 @@ Min number of operations to reach 4 characters: 4
 Min number of operations to reach 12 characters: 7
 user@host:~/0x02-minoperations$ pep8 0-minoperations.py
 ```
-**Check the `0-minoperations.py` file for code implementations**
+**Check the [0-minoperations.py](https://github.com/DeyonOba/alx-interview/blob/main/0x02-minimum_operations/0-minoperations.py) file for code implementations**
 <hr height="40px" />
 
 ***THANKS FOR READING*** 👍

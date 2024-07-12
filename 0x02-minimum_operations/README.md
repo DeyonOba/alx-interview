@@ -1,5 +1,3 @@
-# 0x02 Minimum Operation
-
 <html>
   <body>
     <h1>0x02 Minimum Operation</h1>

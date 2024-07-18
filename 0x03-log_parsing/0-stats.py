@@ -38,11 +38,11 @@ total_file_size = 0
 
 
 def display_stats():
-    sys.stdout.write("File size: {:d}\n".format(total_file_size))
+    sys.stdout.write("File size: {}\n".format(total_file_size))
     status_list = list(track_status_code.items())
     status_list.sort(key=lambda x: x[0])
     for status in status_list:
-        sys.stdout.write("{:d}: {:d}\n".format(status[0], status[1]))
+        sys.stdout.write("{}: {}\n".format(status[0], status[1]))
 
 
 def handle_sigint(signal_number, frame):

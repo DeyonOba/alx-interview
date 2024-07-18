@@ -69,6 +69,4 @@ def minOperations(n):
         else:
             paste()
 
-    if num_char_stored == n:
-        return num_of_operations
-    return n
+    return num_of_operations

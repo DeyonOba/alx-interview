@@ -45,13 +45,13 @@ def display_stats():
         sys.stdout.write("{:d}: {:d}\n".format(status[0], status[1]))
     sys.stdout.flush()
 
-# def handle_sigint(signal_number, frame):
-#     display_stats()
-#     sys.stdout.flush() # Leave this part out
-#     sys.exit(0)
+
+def handle_sigint(signal_number, frame):
+    display_stats()
+    sys.exit(0)
 
 
-# signal.signal(signal.SIGINT, handle_sigint)
+signal.signal(signal.SIGINT, handle_sigint)
 while True:
     try:
         line = sys.stdin.readline()
@@ -83,9 +83,9 @@ while True:
             display_stats()
             count = 0
 
-    except BaseException:
+    except Exception:
         continue
-    except KeyboardInterrupt:
-        display_stats()
-        sys.exit(0)
+    # except KeyboardInterrupt:
+    #     display_stats()
+    #     sys.exit(0)
 display_stats()

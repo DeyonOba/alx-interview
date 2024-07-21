@@ -82,8 +82,9 @@ while True:
         if count == 10:
             display_stats()
             count = 0
+
+    except BaseException:
+        continue
     except KeyboardInterrupt:
         display_stats()
         sys.exit(0)
-    except BaseException:
-        pass

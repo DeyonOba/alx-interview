@@ -43,41 +43,47 @@ def display_stats():
     status_list.sort(key=lambda x: x[0])
     for status in status_list:
         sys.stdout.write("{:d}: {:d}\n".format(status[0], status[1]))
-
-
-def handle_sigint(signal_number, frame):
-    display_stats()
     sys.stdout.flush()
-    sys.exit(0)
+
+# def handle_sigint(signal_number, frame):
+#     display_stats()
+#     sys.stdout.flush() # Leave this part out
+#     sys.exit(0)
 
 
-signal.signal(signal.SIGINT, handle_sigint)
+# signal.signal(signal.SIGINT, handle_sigint)
 while True:
-    line = sys.stdin.readline()
+    try:
+        line = sys.stdin.readline()
 
-    if line == '':
-        break
+        if line == '':
+            break
 
-    pattern = re.compile(PATTERN)
-    match = re.match(pattern, line)
+        pattern = re.compile(PATTERN)
+        match = re.match(pattern, line)
 
-    if not match:
-        continue
+        if not match:
+            continue
 
-    status_code = int(match.group(1))
-    file_size = int(match.group(2))
+        status_code = int(match.group(1))
+        file_size = int(match.group(2))
 
-    if status_code not in STATUS_CODES:
-        continue
+        if status_code not in STATUS_CODES:
+            continue
 
-    if status_code in track_status_code:
-        track_status_code[status_code] += 1
-    else:
-        track_status_code[status_code] = 1
+        if status_code in track_status_code:
+            track_status_code[status_code] += 1
+        else:
+            track_status_code[status_code] = 1
 
-    total_file_size += file_size
-    count += 1
+        total_file_size += file_size
+        count += 1
 
-    if count == 10:
+        if count == 10:
+            display_stats()
+            count = 0
+    except KeyboardInterrupt:
         display_stats()
-        count = 0
+        sys.exit(0)
+    except BaseException:
+        pass

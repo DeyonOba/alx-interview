@@ -88,3 +88,4 @@ while True:
     except KeyboardInterrupt:
         display_stats()
         sys.exit(0)
+display_stats()

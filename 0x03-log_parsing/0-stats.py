@@ -27,7 +27,7 @@ date_pattern = r"\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}"
 tcp_pattern = r"GET /projects/260 HTTP/1.1"
 status_code_pattern = r"\d{3}"
 file_size_pattern = r"\d+"
-PATTERN = r"{} - \[{}\] \"{}\" ({}) ({})".format(
+PATTERN = r"{}\s?-\s?\[{}\] \"{}\" ({}) ({})".format(
     ipv4_pattern, date_pattern, tcp_pattern,
     status_code_pattern, file_size_pattern
 )

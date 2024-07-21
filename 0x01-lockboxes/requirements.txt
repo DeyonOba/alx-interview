@@ -1,1 +1,1 @@
-pycodestyle==1.7.
+pycodestyle==1.7.4

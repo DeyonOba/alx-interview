@@ -24,9 +24,43 @@ def verify_int_range(num):
 
 def validUTF8(data: List[int]) -> bool:
     """Checks for valid UTF-8 characters"""
-    if type(data) is not list:
-        return False
-    return all([verify_int_range(num) for num in data])
+    # Number of bytes in the current UTF-8 character
+    n_bytes = 0
+
+    # Masks to check the leading bits
+    mask1 = 1 << 7
+    mask2 = 1 << 6
+
+    # Loop through each integer in the data list
+    for num in data:
+        # Get the 8 least significant bits of the integer
+        byte = num & 0xFF
+
+        # If this is the start of a new UTF-8 character
+        if n_bytes == 0:
+            # Count the number of leading 1s in the byte
+            mask = 1 << 7
+            while mask & byte:
+                n_bytes += 1
+                mask >>= 1
+
+            # 1-byte character
+            if n_bytes == 0:
+                continue
+
+            # Invalid scenarios according to UTF-8
+            if n_bytes == 1 or n_bytes > 4:
+                return False
+        else:
+            # Check if the byte is of the form 10xxxxxx
+            if not (byte & mask1 and not (byte & mask2)):
+                return False
+
+        # Decrement the number of bytes left in the current UTF-8 character
+        n_bytes -= 1
+
+    # If there are leftover bytes, the data is invalid
+    return n_bytes == 0
 
 
 if __name__ == "__main__":

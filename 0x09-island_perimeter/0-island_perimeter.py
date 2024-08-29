@@ -16,10 +16,9 @@ perimeter of the island described in grid:
     - The island doesn’t have “lakes” (water inside that isn’t
     connected to the water surrounding the island).
 """
-from typing import List
 
 
-def island_perimeter(grid: List[List[int]]) -> int:
+def island_perimeter(grid) -> int:
     """
     Calculate the perimeter of an island grid.
 

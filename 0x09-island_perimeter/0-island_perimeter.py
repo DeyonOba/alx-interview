@@ -29,21 +29,39 @@ def island_perimeter(grid) -> int:
         int: Perimeter of island
     """
     perimeter = 0
-    row = len(grid)
-    column = len(grid[0])
-    for i in range(row):
-        for j in range(column):
-            if grid[i][j] == 1:
-                if (i - 1) >= 0:
-                    if grid[i-1][j] == 0:
-                        perimeter += 1
-                if (i + 1) < row:
-                    if grid[i+1][j] == 0:
-                        perimeter += 1
-                if (j - 1) >= 0:
-                    if grid[i][j-1] == 0:
-                        perimeter += 1
-                if (j + 1) < column:
-                    if grid[i][j+1] == 0:
-                        perimeter += 1
+    # Get the number of rows and columns in the grid
+    n_rows = len(grid)
+    n_columns = len(grid[0])
+
+    # Iterate through each row and column in the grid
+    for r in range(n_rows):
+        for c in range(n_columns):
+            # Checks for land mass (i.e 1)
+            if grid[r][c] == 1:
+                # Check if the current row is the first row
+                # (i.e row idx 0)
+                # There would be no water at the edge of the grid,
+                # increment the perimeter value by 1
+                # or Check if the row above has a water mass then
+                # increment the perimeter value by 1
+                if r == 0 or grid[r-1][c] == 0:
+                    perimeter += 1
+                # Check if the current row is at the end of the grid
+                # increment the perimeter by 1
+                # or Check if the next row below has a water mass
+                # (i.e 0) increment the perimeter by 1
+                if r == n_rows - 1 or grid[r+1][c] == 0:
+                    perimeter += 1
+                # Check if the current column is the first column
+                # increment the perimeter by 1
+                # or Check if the left column has a water mass then
+                # increment the perimeter by 1
+                if c == 0 or grid[r][c-1] == 0:
+                    perimeter += 1
+                # Check if the current column is at the end of the grid
+                # increment the perimeter by 1
+                # or Check if the neighbouring column on the right has
+                # a water mass, then increment perimeter by 1.
+                if c == n_columns - 1 or grid[r][c+1] == 0:
+                    perimeter += 1
     return perimeter
